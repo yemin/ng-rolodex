@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+
+html {
+    margin: 0;
+    box-sizing: border-box;
+}
+*, *:before, *:after{
+    box-sizing: inherit;
+}
+
+body{
+    margin: 0;
+}
+ul{
+    margin: 0;
+    padding: 0;
+    li {list-style-type: none}
+}

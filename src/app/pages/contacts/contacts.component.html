@@ -1,0 +1,13 @@
+<p></p>
+<div *ngIf="contacts" style="width: 80%; margin:0 auto">
+<div *ngFor="let letter of alphabet">
+  <div style="background-color: gray; margin-bottom: 20px;">
+      <span style="color:white;">{{ letter }}</span>
+  </div>
+  <div *ngIf="matchContacts(letter)?.length>0">
+      <app-contact *ngFor="let contact of matchContacts(letter)"
+      [contactInput]="contact">
+    </app-contact>
+  </div>
+</div>
+</div>

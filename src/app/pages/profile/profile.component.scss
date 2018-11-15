@@ -1,0 +1,40 @@
+form {
+    width: 400px;
+    margin: 20px auto;
+    padding: 15px;
+    background-color: #ccc;
+    border-radius: 10px;
+  
+    .ng-pristine {
+      border: 1px sold #aaa !important;
+    }
+    .success {
+      border: 1px solid darken(green, 10%);
+    }
+    .danger {
+      border: 1px solid red;
+    }
+  
+    input {
+      width: 100%;
+      border: 0;
+      border-radius: 10px;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #aaa;
+    }
+  
+    button {
+      width: 100%;
+      border: 0;
+      border-radius: 10px;
+      padding: 15px;
+      color: white;
+      background-color: darken(blue, 25%);
+  
+      &:disabled {
+        background-color: grey;
+      }
+    }
+  }
+    

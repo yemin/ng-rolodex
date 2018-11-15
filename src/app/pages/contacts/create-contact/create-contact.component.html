@@ -1,0 +1,82 @@
+<form #form="ngForm">
+  <h2>Create Contact Template Form</h2>
+    <label>Name: </label>
+    <input 
+    type ="text" 
+    name="name" 
+    required 
+    #nameInput="ngModel"
+    [(ngModel)]="formData.name" 
+    [ngClass]="nameInput.valid ? 'success' : 'danger'">
+    <br/>
+
+    <label>Address: </label>
+    <input 
+    type ="text" 
+    name="address" 
+    #addressInput="ngModel"
+    [(ngModel)]="formData.address" 
+    [ngClass]="addressInput.valid ? 'success' : 'danger'">
+    <br/>
+
+    <label>Create Date: </label>
+    <input 
+    type ="date" 
+    name="createdate" 
+    required
+    #createdInput="ngModel"
+    [(ngModel)]="formData.created_at" 
+    [ngClass]="createdInput.valid ? 'success' : 'danger'">
+    <br/>
+
+    <label>Update Date: </label>
+    <input 
+    type ="date" 
+    name="updatedate" 
+    required
+    #updatedInput="ngModel"
+    [(ngModel)]="formData.updated_at" 
+    [ngClass]="updatedInput.valid ? 'success' : 'danger'">
+    <br/>
+
+    <label>Email: </label>
+    <input 
+    type ="text" 
+    name="email" 
+    #emailInput="ngModel"
+    [(ngModel)]="formData.email" 
+    [ngClass]="emailInput.valid ? 'success' : 'danger'">
+    <br/>
+
+    <label>Mobile: </label>
+    <input 
+    type ="text" 
+    name="mobile" 
+    [(ngModel)]="formData.mobile" >
+    <br/>
+
+    <!-- <label>Home: </label>
+    <input 
+    type ="text" 
+    name="home" 
+    [(ngModel)]="formData.home" >
+    <br/>
+
+    <label>Work: </label>
+    <input 
+    type ="text" 
+    name="work" 
+    [(ngModel)]="formData.work" >
+    <br/> -->
+
+    <label>Photo Url: </label>
+    <input 
+    type ="text" 
+    name="github" 
+    #githubInput="ngModel"
+    [(ngModel)]="formData.github" 
+    [ngClass]="githubInput.valid ? 'success' : 'danger'">
+    <br/>
+  
+    <button (click)="submit()" [disabled]="disableSubmit()">Submit</button>
+  </form>

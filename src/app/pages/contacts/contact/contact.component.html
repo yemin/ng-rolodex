@@ -1,0 +1,7 @@
+<div class="card" (click)="goToContact()">
+    <img class="card-img-top" *ngIf="contactData.github" [src]="contactData.github" alt="Avatar">
+  <div class="container">
+    <h4><b> {{ contactData!.name }} </b></h4> 
+    <p> {{ contactData!.address }}</p>
+  </div>
+</div>

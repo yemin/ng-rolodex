@@ -1,0 +1,37 @@
+<div class="header-container">
+  <div class="header-left">
+    <ul>
+      <li>
+        <h2>
+          <a routerLink="/">Home</a>
+        </h2>
+      </li>
+      <li>
+        <h2>
+          <a routerLink="/contacts">View_Contacts</a>
+        </h2>
+      </li>
+      <li>
+        <h2>
+          <a routerLink="/create-contact">Create_Contact</a>
+        </h2>
+      </li>
+      <li>
+        <h2>
+          <a routerLink="/profile">My Profile</a>
+        </h2>
+      </li>
+    </ul>
+  </div>
+
+  <div class="header-right">
+    <div class="logged-in" *ngIf="isLoggedIn()">
+      Welcome, {{user?.username}}
+      <button (click)="logout()">Log Out</button>
+    </div>
+
+    <div class="logged-out" *ngIf="!isLoggedIn()">
+      <button (click)="login()">Log In</button>
+    </div>
+  </div>
+</div>
