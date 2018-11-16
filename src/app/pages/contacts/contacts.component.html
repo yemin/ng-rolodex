@@ -5,7 +5,7 @@
       <span style="color:white;">{{ letter }}</span>
   </div>
   <div *ngIf="matchContacts(letter)?.length>0">
-      <app-contact *ngFor="let contact of matchContacts(letter)"
+      <app-contact *ngFor="let contact of alphaContacts"
       [contactInput]="contact">
     </app-contact>
   </div>

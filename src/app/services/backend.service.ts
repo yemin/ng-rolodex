@@ -42,6 +42,11 @@ export class BackendService {
     return this.http.put(url, data).toPromise();
   }
 
+  deleteContact(id){
+    const url = this.apiUrl + "Contacts/" + id;
+    return this.http.delete(url).toPromise();
+  }
+  
   addContact(data){
     const url = this.apiUrl + "Contacts";
     return this.http.post(url, data).toPromise();

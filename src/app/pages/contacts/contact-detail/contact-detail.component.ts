@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BackendService } from 'src/app/services/backend.service';
 import { IContact } from 'src/app/interfaces/icontact';
 
@@ -26,7 +26,8 @@ export class ContactDetailComponent implements OnInit {
 
   constructor(private fb:FormBuilder, 
     private route:ActivatedRoute,
-    private backend:BackendService) { }
+    private backend:BackendService,
+    private router:Router) { }
 
   ngOnInit() {
     let id = this.route.snapshot.paramMap.get('id');
@@ -38,16 +39,32 @@ export class ContactDetailComponent implements OnInit {
       });
   }
 
-  get form() {
+  getform() {
     return this.reactiveForm.controls;
   }
-
   updateContact(){
     //console.log(this.reactiveForm.value);
     this.backend.updateContact(this.reactiveForm.value).then(
-      ()=> console.log('data is updated')
+      ()=> {
+        console.log('data is updated');
+        alert("Thank you - the contact is updated.");
+        this.router.navigateByUrl('/contacts');
+      }
     ).catch((err) => {
       console.log('error:', err)
     })
+  }
+
+  deleteContact(){
+    if(confirm("Are you sure to delete?")) {
+      this.backend.deleteContact(this.reactiveForm.value.id).then(
+        ()=> {
+          console.log('data is deleted');
+          this.router.navigateByUrl('/contacts');
+        }
+      ).catch((err)=> {
+        console.log('error:', err)
+      })
+    }
   }
 }

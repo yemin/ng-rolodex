@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    console.log(this._isFilterContactsAsObservable);
+    this.searchService.clearSearch();
     this._disposable.unsubscribe();
   }
 

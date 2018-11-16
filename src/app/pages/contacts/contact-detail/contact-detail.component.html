@@ -1,17 +1,18 @@
 <form [formGroup]="reactiveForm">
   <h2>Edit Contact Reactive Form</h2><br />
+  <img class="card-img-top" style="max-width: 100%" *ngIf="form?.github?.value" [src]="form?.github?.value" alt="Avatar">
   <label>Id: </label>
   <input type="text" name="id" readonly formControlName="id">
   <br>
   <label>Name: </label>
-  <input type="text" name="name" formControlName="name" [ngClass]="form.name.valid ? 'success' : 'danger'">
+  <input type="text" name="name" formControlName="name" [ngClass]="form?.name?.valid ? 'success' : 'danger'">
   <br />
   <!-- errors -->
-  <div [hidden]="form.name.untouched || !form.name.errors">
-    <div *ngIf="form.name?.errors?.required">
+  <div [hidden]="form?.name.untouched || !form?.name.errors">
+    <div *ngIf="form?.name.errors?.required">
       Name is required
     </div>
-    <div *ngIf="form.name?.errors?.minlength">
+    <div *ngIf="form?.name?.errors?.minlength">
       Min Length 5 is required
     </div>
   </div>
@@ -27,5 +28,6 @@
   <label>Photo url: </label>
   <input type="text" name="github" formControlName="github">
   <br />
-  <button (click)="updateContact();">Update</button>
+  <button style="width:40%;" (click)="updateContact();">Update</button>
+  <button style="width:40%; margin-left: 10px" (click)="deleteContact();">Delete</button>
 </form>

@@ -11,6 +11,7 @@ import { IContact } from 'src/app/interfaces/icontact';
 export class ContactsComponent implements OnInit {
   alphabet:string[] = 'abcdefghijklmnopqrstuvwxyz'.toUpperCase().split('');
   contacts:IContact[];
+  alphaContacts:IContact[];
 
   constructor(private backend: BackendService) { }
 
@@ -25,7 +26,7 @@ export class ContactsComponent implements OnInit {
   matchContacts(letter){
     let results = this.contacts.filter(o =>
       o.name.toUpperCase().startsWith(letter));
-      return results;
+      return this.alphaContacts = results;
   }
 
   sortArray(objArray){

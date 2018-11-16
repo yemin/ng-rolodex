@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IContact } from 'src/app/interfaces/icontact';
 import { BackendService } from 'src/app/services/backend.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-contact',
@@ -28,7 +29,8 @@ export class CreateContactComponent implements OnInit {
     instagram: null,
   } ;
   
-  constructor(private backend:BackendService) { 
+  constructor(private router:Router,
+    private backend:BackendService) { 
   }
 
   ngOnInit() {
@@ -50,6 +52,8 @@ export class CreateContactComponent implements OnInit {
       this.formData.created_by = 3; //static key for now;
         this.backend.addContact(this.formData).then((response:IContact)=>{
           console.log(response);
+          alert("Thank you - a new contact is added.");
+          this.router.navigate(['/']);
         }).catch((error) => {
           console.log(error);
         })

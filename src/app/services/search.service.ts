@@ -7,25 +7,27 @@ import { BackendService } from './backend.service';
   providedIn: 'root'
 })
 export class SearchService {
-
-  contacts: IContact[];
   private _isSearchListSubject = new BehaviorSubject<IContact[]>(null);
 
   constructor(private backend:BackendService) {
-    this.backend.getAllContacts().then(
-      (response: IContact[]) => {
-        this.contacts = response;
-      });
+    
    }
 
   searchContactList(searchWord:string) {
-        let filtered = this.contacts.filter(o =>
+    this.backend.getAllContacts().then(
+      (response: IContact[]) => {
+        let filtered = response.filter(o =>
           o.name.toLowerCase().startsWith(searchWord.toLowerCase()));
         console.log(filtered);
         this._isSearchListSubject.next(filtered);
+      });
   }
 
   isSearchListAsAObservable() {
     return this._isSearchListSubject.asObservable();
+  }
+
+  clearSearch(){
+    this._isSearchListSubject = new BehaviorSubject<IContact[]>(null);
   }
 }
