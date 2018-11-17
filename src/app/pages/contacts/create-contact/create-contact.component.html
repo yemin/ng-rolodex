@@ -8,6 +8,7 @@
     #nameInput="ngModel"
     [(ngModel)]="formData.name" 
     [ngClass]="nameInput.valid ? 'success' : 'danger'">
+    <span style="color:red" *ngIf="!nameInput.valid && nameInput.touched">Name is required.</span>
     <br/>
 
     <label>Address: </label>
@@ -43,6 +44,7 @@
     <input 
     type ="text" 
     name="email" 
+    email
     #emailInput="ngModel"
     [(ngModel)]="formData.email" 
     [ngClass]="emailInput.valid ? 'success' : 'danger'">
@@ -78,5 +80,6 @@
     [ngClass]="githubInput.valid ? 'success' : 'danger'">
     <br/>
   
-    <button (click)="submit()" [disabled]="disableSubmit()">Submit</button>
+    <button (click)="submit()" [disabled]="!form.valid">Submit</button>
+    <button (click)="reset()">Reset</button>
   </form>

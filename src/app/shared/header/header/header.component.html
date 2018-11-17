@@ -26,6 +26,11 @@
             </h2>
           </li>
           <li>
+              <h2>
+                <a [routerLink]="['/admin']">Lazy</a>
+              </h2>
+            </li>
+          <li>
               <div class="logged-in" *ngIf="isLoggedIn()">
                   Welcome, {{user?.username}}
                   <button (click)="logout()">Log Out</button>

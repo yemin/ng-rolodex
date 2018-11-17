@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { IContact } from 'src/app/interfaces/icontact';
 import { BackendService } from 'src/app/services/backend.service';
 import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-create-contact',
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
 export class CreateContactComponent implements OnInit {
   @ViewChild('nameInput') nameInput;
   @ViewChild('idInput') idInput;
-  @ViewChild('form') form;
+  @ViewChild('form') form: NgForm;
 
   formData: IContact = { 
     id: 0,
@@ -40,10 +41,9 @@ export class CreateContactComponent implements OnInit {
     if(!this.formData.name){return false;}
     return true;
   }
-  disableSubmit(){
-    const validateName = this.validateName();
-    if(!this.form.valid && validateName){ return true;}
-    return false;
+
+  reset(){
+    this.form.reset();
   }
 
   submit() {

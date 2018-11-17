@@ -17,6 +17,7 @@ const routes: Routes = [
   { path:'create-contact',canActivate: [LoginGuard], component:CreateContactComponent },
   { path:'contacts/:id', canActivate: [LoginGuard], component: ContactDetailComponent},
   { path:'profile', canActivate: [LoginGuard], component:ProfileComponent},
+  { path:'admin', canActivate: [LoginGuard], loadChildren: "../app/admin/admin.module#AdminModule"},
   { path:'**', redirectTo:'', pathMatch: 'full'}
   ];
 
